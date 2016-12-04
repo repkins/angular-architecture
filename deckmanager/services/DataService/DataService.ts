@@ -1,15 +1,17 @@
+import { Injectable, Inject } from '@angular/core';
 import {IDataService} from './IDataService';
 import {ILocalStorageService} from '../../../common/services/LocalStorageService/ILocalStorageService';
 import {IDeck} from '../../../common/models/IDeck';
 import Deck from '../../../common/models/Deck';
 
+@Injectable()
 export default class DataService implements IDataService {
-    private $window:angular.IWindowService;
+    private $window:Window;
     private localStorageService:ILocalStorageService;
     private dataModel:DataModel;
 
-    constructor($window:angular.IWindowService,
-                localStorageService:ILocalStorageService) {
+    constructor(@Inject('window') $window:Window,
+                @Inject('LocalStorageService') localStorageService:ILocalStorageService) {
         this.$window = $window;
         this.localStorageService = localStorageService;
         this.dataModel = new DataModel();
@@ -88,5 +90,3 @@ class DataModel {
         this.decks = decks;
     }
 }
-
-DataService.$inject = ['$window', 'LocalStorageService'];

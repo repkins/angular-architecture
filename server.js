@@ -6,6 +6,7 @@ var app = express(),
 app.use('/img', express.static('./img'));
 app.use('/css', express.static('./css'));
 app.use('/libs', express.static('./libs'));
+app.use('/node_modules', express.static('./node_modules'));
 app.use('/compiled', express.static('./compiled'));
 app.use('/deckbuilder.html', express.static('./deckbuilder/index.html'));
 app.use('/', express.static('./deckmanager'));

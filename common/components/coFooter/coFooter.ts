@@ -1,12 +1,9 @@
+import { Component, Input } from '@angular/core';
 import {html} from './coFooterTemplate.html';
 
-function coFooter():angular.IDirective {
-    'use strict';
+@Component({
+    selector: '[data-co-footer]',
+    template: html
+})
+export class CoFooter {}
 
-    return {
-        scope: {},
-        template: html
-    };
-}
-
-export default coFooter;

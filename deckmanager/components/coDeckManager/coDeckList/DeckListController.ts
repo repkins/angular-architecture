@@ -1,10 +1,12 @@
+import { Injectable, Inject } from '@angular/core';
 import {IFacadeService} from '../../../services/FacadeService/IFacadeService';
 import {IDeck} from '../../../../common/models/IDeck';
 
+@Injectable()
 export default class DeckController {
     private facadeService:IFacadeService;
 
-    constructor(facadeService:IFacadeService) {
+    constructor(@Inject('FacadeService') facadeService:IFacadeService) {
         this.facadeService = facadeService;
     }
 
@@ -25,5 +27,3 @@ export default class DeckController {
         this.facadeService.deleteDeck(deck);
     }
 }
-
-DeckController.$inject = ['FacadeService'];

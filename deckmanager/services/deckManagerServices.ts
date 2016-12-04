@@ -1,14 +1,15 @@
 // import directives
+import { Provider } from '@angular/core';
 import FacadeService from './FacadeService/FacadeService';
 import DataService from './DataService/DataService';
 import UIStateService from './UIStateService/UIStateService';
 
-// register directives
-export default function registerServices(appName:string):void {
-    'use strict';
+// provide services
+const deckManagerServicesProviders:Provider[] = [
+    { provide: 'DataService', useClass: DataService },
+    { provide: 'UIStateService', useClass: UIStateService },
+    { provide: 'FacadeService', useClass: FacadeService },
+    { provide: 'window', useValue: window }
+];
 
-    angular.module(appName)
-        .service('DataService', DataService)
-        .service('UIStateService', UIStateService)
-        .service('FacadeService', FacadeService);
-}
+export default deckManagerServicesProviders;

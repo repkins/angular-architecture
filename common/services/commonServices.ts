@@ -1,12 +1,12 @@
 // import services
+import { Provider } from '@angular/core';
 import PageValueExtractorService from './PageValueExtractorService/PageValueExtractorService';
 import LocalStorageService from './LocalStorageService/LocalStorageService';
 
-// register services
-export default function registerServices(appName:string):void {
-    'use strict';
+// provide services
+const commonServicesProviders:Provider[] = [
+    { provide: 'PageValueExtractorService', useClass: PageValueExtractorService },
+    { provide: 'LocalStorageService', useClass: LocalStorageService }
+];
 
-    angular.module(appName)
-        .service('PageValueExtractorService', PageValueExtractorService)
-        .service('LocalStorageService', LocalStorageService);
-}
+export default commonServicesProviders;

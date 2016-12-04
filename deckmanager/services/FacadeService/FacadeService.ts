@@ -1,13 +1,15 @@
+import { Injectable, Inject } from '@angular/core';
 import {IFacadeService} from './IFacadeService';
 import {IDataService} from '../DataService/IDataService';
 import {IUIStateService} from '../UIStateService/IUIStateService';
 import {IDeck} from '../../../common/models/IDeck';
 
+@Injectable()
 export default class FacadeService implements IFacadeService {
     private dataService:IDataService;
     private uiStateService:IUIStateService;
 
-    constructor(dataService:IDataService, uiStateService:IUIStateService) {
+    constructor(@Inject('DataService') dataService:IDataService, @Inject('UIStateService') uiStateService:IUIStateService) {
         this.dataService = dataService;
         this.uiStateService = uiStateService;
     }
@@ -38,5 +40,3 @@ export default class FacadeService implements IFacadeService {
     }
 
 }
-
-FacadeService.$inject = ['DataService', 'UIStateService'];

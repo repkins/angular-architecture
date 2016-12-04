@@ -1,16 +1,16 @@
+import { Component, Inject } from '@angular/core';
 import {html} from './coNewDeckTemplate.html';
 import NewDeckController from './NewDeckController';
 
-function coNewDeck():angular.IDirective {
-    'use strict';
+@Component({
+    providers: [ NewDeckController ],
+    selector: '[data-co-new-deck]',
+    template: html
+})
+export class CoNewDeck {
+    public newDeckController: NewDeckController;
 
-    return {
-        controller: NewDeckController,
-        controllerAs: 'newDeckController',
-        replace: true,
-        scope: {},
-        template: html
-    };
+    constructor(@Inject(NewDeckController) newDeckController: NewDeckController) {
+        this.newDeckController = newDeckController;
+    }
 }
-
-export default coNewDeck;

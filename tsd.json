@@ -31,6 +31,9 @@
     },
     "angularjs/angular-mocks.d.ts": {
       "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "a84e3f1af08e57bd3911c3cb6d13df89400def3d"
     }
   }
 }

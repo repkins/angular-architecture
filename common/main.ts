@@ -1,10 +1,19 @@
 ///<reference path="../typings/tsd.d.ts"/>
-import * as angular from 'angular';
-import registerServices from './services/commonServices';
-import registerDirectives from './components/commonDirectives';
+import { NgModule } from '@angular/core';
+import commonServicesProviders from './services/commonServices';
+import commonDirectives from './components/commonDirectives';
 
 export const appName:string = 'common';
 
-angular.module(appName, []);
-registerServices(appName);
-registerDirectives(appName);
+@NgModule({
+  declarations: [
+    ...commonDirectives
+  ],
+  exports: [
+    ...commonDirectives
+  ],
+  providers: [
+    ...commonServicesProviders
+  ]
+})
+export class CommonModule {}

@@ -1,14 +1,12 @@
 // import directives
-import coDeckManager from './coDeckManager/coDeckManager';
-import coDeckList from './coDeckManager/coDeckList/coDeckList';
-import coNewDeck from './coDeckManager/coNewDeck/coNewDeck';
+import { CoDeckManager } from './coDeckManager/coDeckManager';
+import { CoDeckList } from './coDeckManager/coDeckList/coDeckList';
+import { CoNewDeck } from './coDeckManager/coNewDeck/coNewDeck';
 
-// register directives
-export default function registerDirectives(appName:string):void {
-    'use strict';
+// re-export directives
+const deckManagerDirectives:any[] = [
+    CoDeckManager, CoDeckList, CoNewDeck
+];
 
-    angular.module(appName)
-        .directive('coDeckManager', coDeckManager)
-        .directive('coDeckList', coDeckList)
-        .directive('coNewDeck', coNewDeck);
-}
+export default deckManagerDirectives;
+export { CoDeckManager };

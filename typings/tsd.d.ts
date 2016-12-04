@@ -8,3 +8,4 @@
 /// <reference path="orchestrator/orchestrator.d.ts" />
 /// <reference path="q/Q.d.ts" />
 /// <reference path="angularjs/angular-mocks.d.ts" />
+/// <reference path="es6-shim/es6-shim.d.ts" />

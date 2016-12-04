@@ -1,12 +1,8 @@
+import { Component } from '@angular/core';
 import { html } from './coDeckManagerTemplate.html';
 
-function coDeckManager():angular.IDirective {
-    'use strict';
-
-    return {
-        scope: {},
-        template: html
-    };
-}
-
-export default coDeckManager;
+@Component({
+    selector: '[data-co-deck-manager]',
+    template: html
+})
+export class CoDeckManager {}

@@ -1,23 +1,35 @@
 ///<reference path="../typings/tsd.d.ts"/>
-import * as angular from 'angular';
-import registerDirectives from './components/deckManagerDirectives';
-import registerServices from './services/deckManagerServices';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule as CommonAppModule } from './../common/main';
+import deckManagerDirectives, { CoDeckManager } from './components/deckManagerDirectives';
+import deckManagerServicesProviders from './services/deckManagerServices';
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // app name
 export const appName:string = 'deckManagerApp';
 
 // register module, directives, services, etc.
-angular.module(appName, ['common']);
-registerDirectives(appName);
-registerServices(appName);
+@NgModule({
+    bootstrap: [ CoDeckManager ],
+    declarations: [
+        ...deckManagerDirectives
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        FormsModule,
+
+        CommonAppModule
+    ],
+    providers: [
+        ...deckManagerServicesProviders
+    ]
+})
+class DeckManagerModule {}
 
 // bootstrap Angular
-let appAngularConfig:angular.IAngularBootstrapConfig = {
-    debugInfoEnabled: true,
-    strictDi: true
-};
-angular.bootstrap(
-    document.getElementById('coDeckManagerApp'),
-    [appName],
-    appAngularConfig
-);
+platformBrowserDynamic().bootstrapModule(DeckManagerModule);

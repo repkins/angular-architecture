@@ -1,12 +1,11 @@
 // import directives
-import coHeader from './coHeader/coHeader';
-import coFooter from './coFooter/coFooter';
+import { CoHeader } from './coHeader/coHeader';
+import { CoFooter } from './coFooter/coFooter';
 
-// register directives
-export default function registerDirectives(appName:string):void {
-    'use strict';
+// re-export directives
+const commonDirectives:any[] = [
+    CoHeader,
+    CoFooter
+];
 
-    angular.module(appName)
-        .directive('coHeader', coHeader)
-        .directive('coFooter', coFooter);
-}
+export default commonDirectives;
