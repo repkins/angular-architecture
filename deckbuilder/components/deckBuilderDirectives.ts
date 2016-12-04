@@ -1,16 +1,13 @@
 // import directives
-import coDeckBuilder from './coDeckBuilder/coDeckBuilder';
-import coDeck from './coDeckBuilder/coDeck/coDeck';
-import coCardList from './coDeckBuilder/coCardList/coCardList';
-import coCardListFilter from './coDeckBuilder/coCardList/coCardListFilter/coCardListFilter';
+import { CoDeckBuilder } from './coDeckBuilder/coDeckBuilder';
+import { CoDeck } from './coDeckBuilder/coDeck/coDeck';
+import { CoCardList } from './coDeckBuilder/coCardList/coCardList';
+import { CoCardListFilter } from './coDeckBuilder/coCardList/coCardListFilter/coCardListFilter';
 
-// register directives
-export default function registerDirectives(appName:string):void {
-    'use strict';
+// re-export directives
+const deckBuilderDirectives:any[] = [
+    CoDeckBuilder, CoDeck, CoCardList, CoCardListFilter
+];
 
-    angular.module(appName)
-        .directive('coDeckBuilder', coDeckBuilder)
-        .directive('coDeck', coDeck)
-        .directive('coCardList', coCardList)
-        .directive('coCardListFilter', coCardListFilter);
-}
+export default deckBuilderDirectives;
+export { CoDeckBuilder };

@@ -1,23 +1,35 @@
 ///<reference path="../typings/tsd.d.ts"/>
-import * as angular from 'angular';
-import registerDirectives from './components/deckBuilderDirectives';
-import registerServices from './services/deckBuilderServices';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule as CommonAppModule } from './../common/main';
+import deckBuilderDirectives, { CoDeckBuilder } from './components/deckBuilderDirectives';
+import deckBuilderServicesProviders from './services/deckBuilderServices';
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // app name
 export const appName:string = 'deckApp';
 
 // register module, directives, services, etc.
-angular.module(appName, ['common']);
-registerDirectives(appName);
-registerServices(appName);
+@NgModule({
+    bootstrap: [ CoDeckBuilder ],
+    declarations: [
+        ...deckBuilderDirectives
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        FormsModule,
+
+        CommonAppModule
+    ],
+    providers: [
+        ...deckBuilderServicesProviders
+    ]
+})
+class DeckBuilderModule {}
 
 // bootstrap Angular
-let appAngularConfig:angular.IAngularBootstrapConfig = {
-    debugInfoEnabled: true,
-    strictDi: true
-};
-angular.bootstrap(
-    document.getElementById('coDeckBuilderApp'),
-    [appName],
-    appAngularConfig
-);
+platformBrowserDynamic().bootstrapModule(DeckBuilderModule);

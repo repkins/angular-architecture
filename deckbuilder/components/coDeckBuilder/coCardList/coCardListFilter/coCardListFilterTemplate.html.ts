@@ -5,7 +5,8 @@ export const html:string =
         <div class="card-list-filter">
             <p>
                 Filter cards by name:
-                <input type="text" data-ng-model="cardListFilterController.filter">
+                <input type="text" [(ngModel)]="cardListFilterController.filter" 
+                    (ngModelChange)="cardListFilterController.setFilter($event)">
             </p>
         </div>
     </div>

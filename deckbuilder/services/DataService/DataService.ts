@@ -1,3 +1,4 @@
+import { Injectable, Inject } from '@angular/core';
 import {IDataService} from './IDataService';
 import {IDeckBuilderPageValue} from '../../models/IDeckBuilderPageValue';
 import {IPageValueExtractorService} from '../../../common/services/PageValueExtractorService/IPageValueExtractorService';
@@ -5,15 +6,16 @@ import {ICard} from '../../../common/models/ICard';
 import {IDeck} from '../../../common/models/IDeck';
 import {ILocalStorageService} from '../../../common/services/LocalStorageService/ILocalStorageService';
 
+@Injectable()
 export default class DataService implements IDataService {
-    private $window:angular.IWindowService;
+    private $window:Window;
     private pageValueExtractorService:IPageValueExtractorService;
     private localStorageService:ILocalStorageService;
     private dataModel:DataModel;
 
-    constructor($window:angular.IWindowService,
-                pageValueExtractorService:IPageValueExtractorService,
-                localStorageService:ILocalStorageService) {
+    constructor(@Inject('window') $window:Window,
+                @Inject('PageValueExtractorService') pageValueExtractorService:IPageValueExtractorService,
+                @Inject('LocalStorageService') localStorageService:ILocalStorageService) {
         this.$window = $window;
         this.pageValueExtractorService = pageValueExtractorService;
         this.localStorageService = localStorageService;
@@ -148,5 +150,3 @@ class DataModel {
         this.deck = deck;
     }
 }
-
-DataService.$inject = ['$window', 'PageValueExtractorService', 'LocalStorageService'];

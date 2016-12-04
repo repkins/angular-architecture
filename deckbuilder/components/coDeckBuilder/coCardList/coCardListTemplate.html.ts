@@ -12,11 +12,11 @@ export const html:string =
                 </div>
             </div>
             <div class="card-list row">
-                <div data-ng-repeat="card in cardListController.getCardList()"
-                    data-ng-click="cardListController.toggleCard(card)"
+                <div *ngFor="let card of cardListController.getCardList()"
+                    (click)="cardListController.toggleCard(card)"
                     class="card text-center col-xs-12 col-sm-4 col-md-3 col-lg-2">
-                    <p data-ng-class="{ 'selected': card.selected }" class="card-item">
-                        <img data-ng-src="img/cards/{{ card.image }}"
+                    <p [ngClass]="{ 'selected': card.selected }" class="card-item">
+                        <img [src]="'img/cards/'+card.image"
                         alt="{{ card.name }}">
                     </p>
                 </div>

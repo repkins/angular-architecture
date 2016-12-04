@@ -11,7 +11,7 @@ describe('deckbuilder.CardListFilterController', () => {
             $rootScope = _$rootScope_;
         });
 
-        cardListFilterController = new CardListFilterController($rootScope, facadeServiceMock);
+        cardListFilterController = new CardListFilterController(facadeServiceMock);
     });
 
     it('should watch the filter', () => {

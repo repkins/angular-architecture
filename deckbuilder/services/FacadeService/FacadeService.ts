@@ -1,12 +1,14 @@
+import { Injectable, Inject } from '@angular/core';
 import {IFacadeService} from './IFacadeService';
 import {ICard} from '../../../common/models/ICard';
 import {IDataService} from '../DataService/IDataService';
 import {IDeck} from '../../../common/models/IDeck';
 
+@Injectable()
 export default class FacadeService implements IFacadeService {
     private dataService:IDataService;
 
-    constructor(dataService:IDataService) {
+    constructor(@Inject('DataService') dataService:IDataService) {
         this.dataService = dataService;
     }
 
@@ -34,5 +36,3 @@ export default class FacadeService implements IFacadeService {
         this.dataService.backToManager();
     }
 }
-
-FacadeService.$inject = ['DataService'];

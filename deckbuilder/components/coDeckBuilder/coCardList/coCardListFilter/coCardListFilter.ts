@@ -1,16 +1,16 @@
+import { Component, Inject } from '@angular/core';
 import {html} from './coCardListFilterTemplate.html';
 import CardListFilterController from './CardListFilterController';
 
-function coCardListFilter():angular.IDirective {
-    'use strict';
+@Component({
+    providers: [ CardListFilterController ],
+    selector: '[data-co-card-list-filter]',
+    template: html
+})
+export class CoCardListFilter {
+    public cardListFilterController: CardListFilterController;
 
-    return {
-        controller: CardListFilterController,
-        controllerAs: 'cardListFilterController',
-        replace: true,
-        scope: {},
-        template: html
-    };
+    constructor(@Inject(CardListFilterController) cardListFilterController: CardListFilterController) {
+        this.cardListFilterController = cardListFilterController;
+    }
 }
-
-export default coCardListFilter;

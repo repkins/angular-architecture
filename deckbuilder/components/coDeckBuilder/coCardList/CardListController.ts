@@ -1,11 +1,13 @@
+import { Injectable, Inject } from '@angular/core';
 import {IFacadeService} from '../../../services/FacadeService/IFacadeService';
 import {ICard} from '../../../../common/models/ICard';
 
 
+@Injectable()
 export default class CardListController {
     private facadeService:IFacadeService;
 
-    constructor(deckBuilderService:IFacadeService) {
+    constructor(@Inject('FacadeService') deckBuilderService:IFacadeService) {
         this.facadeService = deckBuilderService;
     }
 
@@ -17,5 +19,3 @@ export default class CardListController {
         this.facadeService.toggleCard(card);
     }
 }
-
-CardListController.$inject = ['FacadeService'];
